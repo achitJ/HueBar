@@ -3,3 +3,6 @@ dist/
 out/
 *.vsix
 .vscode-test/
+.vscode/
+.omc/
+.claude/

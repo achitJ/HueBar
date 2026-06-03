@@ -1,0 +1,43 @@
+export interface PaletteColor {
+  name: string;
+  hex: string;
+}
+
+export const PALETTE: PaletteColor[] = [
+  { name: 'Pomegranate',   hex: '#7e3232' },
+  { name: 'Pumpkin',       hex: '#7a3a18' },
+  { name: 'Tangerine',     hex: '#885a20' },
+  { name: 'Sunflower',     hex: '#786818' },
+  { name: 'Citrus',        hex: '#5e6e1a' },
+  { name: 'Emerald',       hex: '#1c6238' },
+  { name: 'Nephritis',     hex: '#1a5032' },
+  { name: 'Turquoise',     hex: '#1e6858' },
+  { name: 'Green Sea',     hex: '#185850' },
+  { name: 'Peter River',   hex: '#285a8a' },
+  { name: 'Belize Hole',   hex: '#1e4272' },
+  { name: 'Amethyst',      hex: '#583878' },
+  { name: 'Wisteria',      hex: '#4c2e6e' },
+  { name: 'Wet Asphalt',   hex: '#2e3f52' },
+  { name: 'Midnight Blue', hex: '#243240' },
+  { name: 'Alizarin',      hex: '#7a2e2e' },
+  { name: 'Concrete',      hex: '#445658' },
+  { name: 'Dark Red',      hex: '#6e1c14' },
+  { name: 'Dark Pumpkin',  hex: '#7a2e00' },
+  { name: 'Dark Teal',     hex: '#0e6050' },
+  { name: 'Dark Navy',     hex: '#103450' },
+  { name: 'Dark Violet',   hex: '#40244c' },
+  { name: 'Espresso',      hex: '#4e3228' },
+  { name: 'Steel Blue',    hex: '#365070' },
+  { name: 'Sea Green',     hex: '#1e5830' },
+  { name: 'Coral',         hex: '#703e3e' },
+  { name: 'Orchid',        hex: '#5e3468' },
+  { name: 'Sky Blue',      hex: '#2e5880' },
+  { name: 'Sage',          hex: '#3a5e3a' },
+  { name: 'Dusty Rose',    hex: '#6a3845' },
+  { name: 'Cobalt',        hex: '#2c3878' },
+  { name: 'Olive',         hex: '#505000' },
+  { name: 'Maroon',        hex: '#600000' },
+  { name: 'Pine',          hex: '#244818' },
+  { name: 'Ocean',         hex: '#124868' },
+  { name: 'Lavender',      hex: '#3a3480' },
+];

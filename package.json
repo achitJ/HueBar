@@ -1,6 +1,6 @@
 {
-  "name": "chromabar",
-  "displayName": "ChromaBar",
+  "name": "huebar",
+  "displayName": "HueBar",
   "description": "Automatically colorize VS Code title bars for visual distinction in macOS Mission Control",
   "version": "0.1.0",
   "publisher": "achitjain",
@@ -8,34 +8,47 @@
   "engines": {
     "vscode": "^1.85.0"
   },
-  "categories": ["Other"],
-  "keywords": ["titlebar", "color", "macos", "mission control", "workspace"],
-  "activationEvents": ["onStartupFinished"],
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "titlebar",
+    "color",
+    "macos",
+    "mission control",
+    "workspace"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "chromabar.setColor",
+        "command": "huebar.setColor",
         "title": "Set Title Bar Color",
-        "category": "ChromaBar"
+        "category": "HueBar"
       },
       {
-        "command": "chromabar.resetColor",
+        "command": "huebar.resetColor",
         "title": "Reset Title Bar Color",
-        "category": "ChromaBar"
+        "category": "HueBar"
       }
     ],
     "configuration": {
-      "title": "ChromaBar",
+      "title": "HueBar",
       "properties": {
-        "chromabar.enabled": {
+        "huebar.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable or disable ChromaBar title bar colorization."
+          "description": "Enable or disable HueBar title bar colorization."
         },
-        "chromabar.scope": {
+        "huebar.scope": {
           "type": "string",
-          "enum": ["workspace", "user"],
+          "enum": [
+            "workspace",
+            "user"
+          ],
           "enumDescriptions": [
             "Write color customizations to workspace settings (.vscode/settings.json)",
             "Write color customizations to global user settings"
@@ -43,7 +56,7 @@
           "default": "workspace",
           "description": "Where to write workbench color customizations."
         },
-        "chromabar.colorStatusBar": {
+        "huebar.colorStatusBar": {
           "type": "boolean",
           "default": false,
           "description": "Also apply the workspace color to the status bar."
@@ -56,13 +69,19 @@
     "compile": "node esbuild.js",
     "watch": "node esbuild.js --watch",
     "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
     "package": "vsce package --no-dependencies"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.60.1",
+    "@typescript-eslint/parser": "^8.60.1",
     "@vscode/vsce": "^2.22.0",
     "esbuild": "^0.19.0",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.3",
     "typescript": "^5.3.0"
   }
 }

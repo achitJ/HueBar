@@ -1,13 +1,17 @@
-import { PALETTE } from './palette';
+import { PALETTE } from '../constants/palette';
 
 export function djb2Hash(str: string): number {
   let hash = 5381;
   for (let i = 0; i < str.length; i++) {
-    hash = (((hash << 5) + hash) + str.charCodeAt(i)) | 0;
+    hash = ((hash << 5) + hash + str.charCodeAt(i)) | 0;
   }
   return Math.abs(hash);
 }
 
+/**
+ * Picks a palette color for a folder by hashing its path, skipping already-usedcolors. Falls back
+ * to the hashed index if all palette colors are taken.
+ */
 export function getAutoColor(folderPath: string, usedColors: Set<string>): string {
   const start = djb2Hash(folderPath) % PALETTE.length;
   for (let i = 0; i < PALETTE.length; i++) {
@@ -31,6 +35,9 @@ export function relativeLuminance(hex: string): number {
   return 0.2126 * linearize(r) + 0.7152 * linearize(g) + 0.0722 * linearize(b);
 }
 
+/**
+ * Returns white or black foreground color based on background luminance.
+ */
 export function contrastForeground(bgHex: string): string {
   return relativeLuminance(bgHex) < 0.4 ? '#ffffff' : '#000000';
 }
@@ -63,7 +70,9 @@ function hexToHsl(hex: string): [number, number, number] {
 
 function hslToHex(h: number, s: number, l: number): string {
   if (s === 0) {
-    const v = Math.round(l * 255).toString(16).padStart(2, '0');
+    const v = Math.round(l * 255)
+      .toString(16)
+      .padStart(2, '0');
     return `#${v}${v}${v}`;
   }
 
@@ -79,10 +88,16 @@ function hslToHex(h: number, s: number, l: number): string {
     return p;
   }
 
-  const toHex = (x: number) => Math.round(x * 255).toString(16).padStart(2, '0');
+  const toHex = (x: number) =>
+    Math.round(x * 255)
+      .toString(16)
+      .padStart(2, '0');
   return `#${toHex(hue2rgb(h + 1 / 3))}${toHex(hue2rgb(h))}${toHex(hue2rgb(h - 1 / 3))}`;
 }
 
+/**
+ * Reduces lightness by `amount` percentage points, clamped at 0.
+ */
 export function darkenHsl(hex: string, amount: number): string {
   const [h, s, l] = hexToHsl(hex);
   return hslToHex(h, s, Math.max(0, l - amount));

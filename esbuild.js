@@ -19,15 +19,15 @@ async function main() {
 
   if (watch) {
     await ctx.watch();
-    console.log('[chromabar] watching...');
+    console.log('[huebar] watching...');
   } else {
     await ctx.rebuild();
     await ctx.dispose();
-    console.log('[chromabar] build succeeded');
+    console.log('[huebar] build succeeded');
   }
 }
 
 main().catch(e => {
-  console.error('[chromabar] build failed:', e);
+  console.error('[huebar] build failed:', e);
   process.exit(1);
 });
