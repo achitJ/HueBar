@@ -64,6 +64,8 @@ export async function applyColor(color: string): Promise<void> {
     ...existing,
     'titleBar.activeBackground': color,
     'titleBar.activeForeground': activeFg,
+    'titleBar.inactiveBackground': color,
+    'titleBar.inactiveForeground': activeFg,
   };
 
   if (colorStatusBar) {
