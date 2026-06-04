@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { getAutoColor, contrastForeground, darkenHsl } from './color';
+import { getAutoColor, contrastForeground } from './color';
 import { STATE_KEY, STATUS_BAR_KEYS, TITLE_BAR_KEYS } from '../constants/constants';
 
 export interface WorkspaceEntry {
@@ -55,9 +55,7 @@ export async function applyColor(color: string): Promise<void> {
   const target = getConfigTarget(config);
   const colorStatusBar = config.get<boolean>('colorStatusBar', false);
 
-  const inactiveColor = darkenHsl(color, 0.2);
   const activeFg = contrastForeground(color);
-  const inactiveFg = contrastForeground(inactiveColor);
 
   const workbenchConfig = vscode.workspace.getConfiguration('workbench');
   const existing = workbenchConfig.get<Record<string, string>>('colorCustomizations') ?? {};
@@ -65,9 +63,7 @@ export async function applyColor(color: string): Promise<void> {
   const updates: Record<string, string> = {
     ...existing,
     'titleBar.activeBackground': color,
-    'titleBar.inactiveBackground': inactiveColor,
     'titleBar.activeForeground': activeFg,
-    'titleBar.inactiveForeground': inactiveFg,
   };
 
   if (colorStatusBar) {

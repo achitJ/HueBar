@@ -2,7 +2,7 @@
   "name": "huebar",
   "displayName": "HueBar",
   "description": "Automatically colorize VS Code title bars for visual distinction in macOS Mission Control",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "achitjain",
   "license": "MIT",
   "engines": {
