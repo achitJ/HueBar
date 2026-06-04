@@ -5,6 +5,10 @@
   "version": "0.1.1",
   "publisher": "achitjain",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/achitJ/HueBar.git"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
